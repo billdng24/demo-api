@@ -1,0 +1,14 @@
+[tool.poetry]
+name = "backend"
+version = "0.1.0"
+description = ""
+authors = ["nguyendv-amira <nguyen_dv@amira.vn>"]  # format cũ, không dùng list dict
+
+[tool.poetry.dependencies]
+python = ">=3.10"
+fastapi = ">=0.135.1,<0.136.0"
+uvicorn = ">=0.42.0,<0.43.0"
+
+[build-system]
+requires = ["poetry-core>=1.0.0"]
+build-backend = "poetry.core.masonry.api"
