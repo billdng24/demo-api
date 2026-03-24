@@ -9,13 +9,17 @@ pipeline {
 
         stage('Build Image') {
             steps {
-                sh 'docker build -t $DOCKER_HUB/fastapi-app:latest .'
+                sh 'docker build -t $DOCKER_HUB/fastapi-app:latest -f Docker/app/Dockerfile .'
             }
         }
 
         stage('Push Image') {
             steps {
-                sh 'docker push $DOCKER_HUB/fastapi-app:latest'
+                script {
+                    docker.withRegistry('', 'dockerhub-creds') {
+                        sh 'docker push $DOCKER_HUB/fastapi-app:latest'
+                    }
+                }
             }
         }
     }
